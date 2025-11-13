@@ -6,6 +6,24 @@ $hero_subtitle = get_theme_mod( 'macsoft_hero_subtitle' );
 $hero_cta      = get_theme_mod( 'macsoft_hero_cta_label' );
 $hero_cta_link = get_theme_mod( 'macsoft_hero_cta_link' );
 
+$default_apps_count = number_format_i18n( wp_count_posts()->publish ) . '+';
+$categories_total   = wp_count_terms( 'category' );
+if ( is_wp_error( $categories_total ) ) {
+    $categories_total = 0;
+}
+$default_categories_count = number_format_i18n( $categories_total );
+$default_reviews_count    = number_format_i18n( wp_count_comments()->approved );
+
+$hero_stats = [
+    'apps'       => macsoft_get_theme_option( 'hero_apps_count', $default_apps_count ),
+    'categories' => macsoft_get_theme_option( 'hero_categories_count', $default_categories_count ),
+    'reviews'    => macsoft_get_theme_option( 'hero_reviews_count', $default_reviews_count ),
+];
+
+$curated_title     = macsoft_get_theme_option( 'curated_title', __( 'Curated collections', 'macsoft' ) );
+$curated_cta_label = macsoft_get_theme_option( 'curated_cta_label', __( 'View all', 'macsoft' ) );
+$curated_cta_link  = macsoft_get_theme_option( 'curated_cta_link', get_post_type_archive_link( 'post' ) );
+
 $latest_query = new WP_Query( [
     'posts_per_page' => 9,
 ] );
@@ -41,15 +59,15 @@ $categories = get_categories( [
             </div>
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <strong><?php echo esc_html( wp_count_posts()->publish ); ?>+</strong>
+                    <strong><?php echo esc_html( $hero_stats['apps'] ); ?></strong>
                     <p><?php esc_html_e( 'Apps indexed', 'macsoft' ); ?></p>
                 </div>
                 <div class="hero-stat">
-                    <strong><?php echo esc_html( wp_count_terms( 'category' ) ); ?></strong>
+                    <strong><?php echo esc_html( $hero_stats['categories'] ); ?></strong>
                     <p><?php esc_html_e( 'Categories', 'macsoft' ); ?></p>
                 </div>
                 <div class="hero-stat">
-                    <strong><?php echo esc_html( number_format_i18n( wp_count_comments()->approved ) ); ?></strong>
+                    <strong><?php echo esc_html( $hero_stats['reviews'] ); ?></strong>
                     <p><?php esc_html_e( 'User reviews', 'macsoft' ); ?></p>
                 </div>
             </div>
@@ -88,8 +106,10 @@ $categories = get_categories( [
 
     <section class="home-secondary">
         <div class="section-title">
-            <h2><?php esc_html_e( 'Curated collections', 'macsoft' ); ?></h2>
-            <a class="hero-cta" href="<?php echo esc_url( get_post_type_archive_link( 'post' ) ); ?>"><?php esc_html_e( 'View all', 'macsoft' ); ?></a>
+            <h2><?php echo esc_html( $curated_title ); ?></h2>
+            <?php if ( $curated_cta_label && $curated_cta_link ) : ?>
+                <a class="hero-cta" href="<?php echo esc_url( $curated_cta_link ); ?>"><?php echo esc_html( $curated_cta_label ); ?></a>
+            <?php endif; ?>
         </div>
         <div class="app-grid">
             <?php if ( $featured_query->have_posts() ) : ?>
