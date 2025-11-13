@@ -21,5 +21,14 @@
         });
       }
     });
+
+    const $tabButtons = $('.app-tabs button');
+    $tabButtons.on('click', function () {
+      const target = this.dataset.tab;
+      $tabButtons.removeClass('active');
+      $(this).addClass('active');
+      $('.tab-panel').removeClass('active');
+      $('#' + target).addClass('active');
+    });
   });
 })(jQuery);
