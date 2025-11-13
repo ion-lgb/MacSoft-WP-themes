@@ -10,6 +10,20 @@ if ( ! defined( 'MACSOFT_VERSION' ) ) {
 require_once get_template_directory() . '/inc/custom-fields.php';
 require_once get_template_directory() . '/inc/template-tags.php';
 
+function macsoft_get_theme_option( $key, $default = '' ) {
+    $options = get_option( 'macsoft_theme_options', [] );
+
+    if ( ! is_array( $options ) ) {
+        $options = [];
+    }
+
+    if ( isset( $options[ $key ] ) && '' !== $options[ $key ] ) {
+        return $options[ $key ];
+    }
+
+    return $default;
+}
+
 function macsoft_theme_support() {
     load_theme_textdomain( 'macsoft', get_template_directory() . '/languages' );
     add_theme_support( 'automatic-feed-links' );
@@ -68,4 +82,5 @@ function macsoft_register_image_sizes() {
 }
 add_action( 'after_setup_theme', 'macsoft_register_image_sizes' );
 
+require_once get_template_directory() . '/inc/admin-settings.php';
 require_once get_template_directory() . '/inc/customizer.php';
