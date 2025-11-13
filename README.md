@@ -6,6 +6,7 @@ A lightweight WordPress theme inspired by [macwk.com](https://www.macwk.com/) th
 
 - Sticky glassmorphism header with live search form
 - Hero section driven by Customizer controls (title, subtitle, CTA)
+- Appearance → MacSoft Options page to override hero metrics + curated CTA copy
 - App cards with badges for version, file size, compatibility, and download buttons
 - Custom meta box for managing download URL + metadata per post
 - Responsive front page with category filters, featured collections, and secondary sections
@@ -19,13 +20,15 @@ A lightweight WordPress theme inspired by [macwk.com](https://www.macwk.com/) th
 2. In `wp-admin → Appearance → Themes`, activate **MacSoft Theme**.
 3. Set a static front page (`Settings → Reading`) and assign the "Front page" to any page using the default template.
 4. Visit `Appearance → Customize → Hero Section` to set hero copy and CTA.
-5. When editing posts, fill out the **App Details** meta box so cards show version, file size, and download link.
-6. Assign posts to categories (e.g., Utilities, Creativity, Productivity) to power the filter tabs.
+5. Visit `Appearance → MacSoft Options` if you want to override the hero statistics or curated CTA text/link.
+6. When editing posts, fill out the **App Details** meta box so cards show version, file size, and download link.
+7. Assign posts to categories (e.g., Utilities, Creativity, Productivity) to power the filter tabs.
 
 ## Development notes
 
 - Main styles live in `assets/css/main.css`; tweak colors or layout there.
 - Lightweight jQuery helper in `assets/js/main.js` handles category filtering (uses `data-categories`).
 - Template partial for app cards: `template-parts/content-card.php`.
+- Theme options admin file: `inc/admin-settings.php` uses the Settings API for hero metrics + curated CTA.
 - Add `macsoft_featured` meta (`yes`) to highlight posts in the front-page curated section (e.g., via Custom Fields plugin or code).
 - The theme intentionally keeps dependencies minimal for easy customization.
