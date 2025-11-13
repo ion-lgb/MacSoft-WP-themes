@@ -1,0 +1,19 @@
+/*
+Theme Name: MacSoft Theme
+Theme URI: https://example.com/macsoft-theme
+Author: Codex Assistant
+Author URI: https://example.com
+Description: A clean download-focused WordPress theme inspired by macwk.com, optimized for showcasing macOS applications with feature highlights, hero sections, and categorized grids.
+Version: 1.0.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: macsoft
+Tags: custom-logo, custom-menu, featured-images, grid-layout, blog
+*/
+
+/*
+ * The bulk of the styling lives in assets/css/main.css. This file only
+ * contains the theme header comment required by WordPress.
+ */
