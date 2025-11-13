@@ -325,6 +325,161 @@ footer a {
   align-items: center;
 }
 
+.single-app {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.app-summary,
+.app-panel {
+  background: var(--macsoft-surface);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+.app-summary .app-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.app-summary .app-thumb img {
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  object-fit: contain;
+}
+
+.app-summary h1 {
+  margin: 0;
+}
+
+.app-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.app-meta-card {
+  border: 1px solid var(--macsoft-border);
+  border-radius: 16px;
+  padding: 1rem;
+  background: rgba(249, 250, 251, 0.85);
+}
+
+.app-meta-card span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--macsoft-muted);
+  margin-bottom: 0.25rem;
+}
+
+.app-panel {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-panel .download-button {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.05rem;
+  padding: 1rem 1.5rem;
+}
+
+.mirror-links a {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--macsoft-border);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.mirror-links a span:last-child {
+  color: var(--macsoft-muted);
+  font-weight: 500;
+}
+
+.password-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  font-size: 0.85rem;
+}
+
+.app-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  border-bottom: 1px solid var(--macsoft-border);
+}
+
+.app-tabs button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  padding: 0 0 0.75rem;
+  cursor: pointer;
+  color: var(--macsoft-muted);
+  border-bottom: 2px solid transparent;
+}
+
+.app-tabs button.active {
+  color: var(--macsoft-text);
+  border-color: var(--macsoft-primary);
+  font-weight: 600;
+}
+
+.tab-panel {
+  display: none;
+  margin-top: 2rem;
+  background: var(--macsoft-surface);
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.install-notes ul {
+  padding-left: 1.2rem;
+}
+
+.install-notes li {
+  margin-bottom: 0.5rem;
+}
+
+.single-download-panel {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .single-app {
+    grid-template-columns: 1fr;
+  }
+  .app-panel {
+    position: static;
+  }
+  .app-summary .app-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
 .single-hero .thumb img {
   width: 120px;
   height: 120px;
